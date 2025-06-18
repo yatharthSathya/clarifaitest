@@ -1,0 +1,31 @@
+pip install -U clarifai
+
+# Step 1: Clone the repo
+!git clone https://github.com/Clarifai/clarifai-python.git
+
+# Step 2: Change into the repo directory (persistent in Colab with %cd)
+%cd clarifai-python
+
+# Step 3: Install dependencies
+!pip install -r requirements.txt
+
+# Step 4: Install the Clarifai Python SDK package
+!python setup.py install
+
+
+pip install --upgrade clarifai
+
+
+from clarifai.client.model import Model
+
+# ✅ Paste your working PAT here
+CLARIFAI_PAT = ""
+
+# ✅ Use Clarifai's public Sentiment Classifier model
+model = Model(
+    url="https://clarifai.com/clarifai/main/models/Sentiment-Classifier",
+    pat=CLARIFAI_PAT
+)
+
+response = model.predict_by_text(text="")
+print(response)
